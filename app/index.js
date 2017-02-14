@@ -1,1 +1,2 @@
-import Vue from 'vue'
+require('./../style/scss/style.scss');
+import Vue from './vue'
