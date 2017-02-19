@@ -21,7 +21,6 @@ module.exports = {
                 }, {
                     loader: "sass-loader"
                 }],
-                // use style-loader in development
                 fallbackLoader: "style-loader"
             })
         }]
