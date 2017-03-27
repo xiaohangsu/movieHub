@@ -1,8 +1,9 @@
-const router       = require('koa-router')();
+const Router       = require('koa-router');
 const send         = require('koa-send');
 
-router.get('/', function*(){
-    yield send(this, './index.html');
+let router         = new Router();
+router.get('/', (ctx, next)=> {
+    return send(ctx, './index.html');
 });
 
 
