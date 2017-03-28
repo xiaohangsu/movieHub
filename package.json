@@ -5,7 +5,8 @@
   "main": "",
   "scripts": {
     "build": "./node_modules/.bin/webpack-dev-server",
-    "run": "nodemon app.js"
+    "dev-run": "nodemon app.js dev",
+    "dist-run": "./node_modules/.bin/webpack | node app.js dist"
   },
   "author": "XiaohangSu",
   "license": "MIT",
@@ -21,9 +22,11 @@
   "dependencies": {
     "babel-preset-env": "^1.2.2",
     "babel-register": "^6.24.0",
+    "ejs": "^2.5.6",
     "koa": "^2.2.0",
     "koa-router": "^7.0.1",
     "koa-send": "^3.3.0",
+    "koa-views": "^6.0.1",
     "mysql": "^2.13.0",
     "nodemon": "^1.11.0",
     "sequelize": "^3.30.3",
