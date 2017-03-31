@@ -1,20 +1,35 @@
 require('babel-register');
+require('babel-polyfill');
+const Koa        = require('koa');
+const views      = require('koa-views');
+const connection = require('./data/connection');
+const bodyParser = require('koa-bodyparser');
 
-const Koa   = require('koa');
-const views = require('koa-views');
+const index     = require('./routes/index');
+const customer  = require('./routes/customer');
+const db        = require('./routes/db');
 
-const app   = new Koa();
+connection
+    .authenticate()
+    .then(()=> {
+        console.log('Connection has been established successfully.');
 
-const index = require('./routes/index');
+        const app   = new Koa();
+        app
+            .use(bodyParser())
+            .use(views(__dirname + '/views', {
+                map: {
+                    html: 'ejs'
+                }
+            }))
+            .use(index.routes())
+            .use(db.routes())
+            .use(customer.routes())
+            .use(index.allowedMethods())
+            .use(db.allowedMethods());
 
-app
-    .use(views(__dirname + '/views', {
-        map: {
-            html: 'ejs'
-        }
-    }))
-    .use(index.routes())
-    .use(index.allowedMethods());
 
-
-app.listen(8081);
+        app.listen(8081);
+    }).catch((err)=> {
+        console.log('Unable to connect to the database:', err);
+    });
