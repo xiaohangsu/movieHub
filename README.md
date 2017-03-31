@@ -1,9 +1,6 @@
-# webBootstrap
-Bootstrap Setup for future web project used
+# MovieHub
+MovieHub backend inhert from repo/webBootstrap
 
 ## package
-* vue
-* webpack
-* scss
 * koa2
-* *sequelize* (varied by different database, here used mysql)
+* *sequelize* (mysql)
