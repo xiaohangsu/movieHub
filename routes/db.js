@@ -8,7 +8,7 @@ router.post('/db/addCustomer', async (ctx, next)=> {
         console.log('Add Customer Success: ', instance);
         return {
             status: 200,
-            message: 'success'
+            message: 'Success'
         };
     }).catch((err) => {
         console.log('Add Customer Error: ', err.errors);
