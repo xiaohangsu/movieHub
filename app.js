@@ -7,14 +7,15 @@ const bodyParser = require('koa-bodyparser');
 
 const index     = require('./routes/index');
 const customer  = require('./routes/customer');
-const db        = require('./routes/db');
+const movie     = require('./routes/movie');
+const rating    = require('./routes/rating');
 
 connection
     .authenticate()
     .then(()=> {
         console.log('Connection has been established successfully.');
 
-        const app   = new Koa();
+        const app = new Koa();
         app
             .use(bodyParser())
             .use(views(__dirname + '/views', {
@@ -23,10 +24,13 @@ connection
                 }
             }))
             .use(index.routes())
-            .use(db.routes())
             .use(customer.routes())
+            .use(rating.routes())
+            .use(movie.routes())
             .use(index.allowedMethods())
-            .use(db.allowedMethods());
+            .use(customer.allowedMethods())
+            .use(rating.allowedMethods())
+            .use(movie.allowedMethods());
 
         app.listen(5000);
     }).catch((err)=> {
