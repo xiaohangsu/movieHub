@@ -1,5 +1,3 @@
-require('babel-register');
-
 const Koa   = require('koa');
 const views = require('koa-views');
 
@@ -17,4 +15,4 @@ app
     .use(index.allowedMethods());
 
 
-app.listen(8081);
+app.listen(5000);
