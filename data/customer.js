@@ -1,4 +1,3 @@
-const Sequelize  = require('sequelize');
 const connection = require('./connection');
 
 
@@ -9,7 +8,7 @@ class Customer {
     }
 
     findUser(json) {
-        return this.conn.query('SELECT cusid, cusname, cusemail, cuspassword \
+        return this.conn.query('SELECT * \
             FROM Customers WHERE cusname = :cusname LIMIT 1;', { replacements: json });
     }
 
