@@ -9,14 +9,14 @@ class Movie {
     }
 
     findMovie(json) {
-        return this.conn.query('SELECT * FROM Movies \
-            WHERE movid=:movid', {replacements: json});
+        return this.conn.query('SELECT * FROM Movies '
+            + 'WHERE movid=:movid', {replacements: json});
     }
 
     addMovie(json) {
-        return this.conn.query('INSERT INTO Movies \
-            (movid, movname, movyear, genre, director, description, movTrailerUrl, movScreenshotUrl) \
-            VALUES (:movid, :movname, :movyear, :genre, :director, :description, :movTrailerUrl, :movScreenshotUrl)',
+        return this.conn.query('INSERT INTO Movies '
+            + '(movid, movname, movyear, genre, director, description, movTrailerUrl, movScreenshotUrl) '
+            + 'VALUES (:movid, :movname, :movyear, :genre, :director, :description, :movTrailerUrl, :movScreenshotUrl)',
             {replacements: json});
     }
 
@@ -44,14 +44,14 @@ class Movie {
     }
 
     getMoviesByGenre(json) {
-        return this.conn.query('SELECT * FROM Movies \
-            WHERE genre=:genre and movid>:movid ORDER BY movid LIMIT :count',
+        return this.conn.query('SELECT * FROM Movies '
+            + 'WHERE genre=:genre and movid>:movid ORDER BY movid LIMIT :count',
             {replacements: json});
     }
 
     getNewestMovies(json) {
-        return this.conn.query('SELECT * FROM Movies \
-            ORDER BY movyear DESC LIMIT :count',
+        return this.conn.query('SELECT * FROM Movies '
+            + 'ORDER BY movyear DESC LIMIT :count',
             {replacements: json});
     }
 
