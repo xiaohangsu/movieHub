@@ -4,6 +4,7 @@ const rating    = require('./../data/rating');
 let router = new Router();
 
 router.post('/db/addRating', async (ctx, next)=> {
+    console.log('/db/addRating Request ', JSON.stringify(ctx.request.body));
     ctx.body = await rating.addRating(ctx.request.body).then((instance)=> {
         console.log('/db/addRating POST | Success: ', JSON.stringify(instance[0]));
         return {
@@ -20,6 +21,7 @@ router.post('/db/addRating', async (ctx, next)=> {
 });
 
 router.post('/db/deleteRating', async (ctx, next)=> {
+    console.log('/db/deleteRating Request ', JSON.stringify(ctx.request.body));
     ctx.body = await rating.deleteRating(ctx.request.body).then((instance)=> {
         console.log('/db/deleteRating POST | Success: ', JSON.stringify(instance[0]));
         if (instance[0].affectedRows != 0) {
@@ -44,6 +46,7 @@ router.post('/db/deleteRating', async (ctx, next)=> {
 });
 
 router.post('/db/updateRating', async (ctx, next)=> {
+    console.log('/db/updateRating Request ', JSON.stringify(ctx.request.body));
     ctx.body = await rating.updateRating(ctx.request.body).then((instance)=> {
         console.log('/db/updateRating POST | Success: ', JSON.stringify(instance[0]));
         if (instance[0].affectedRows != 0 && instance[0].changeRows != 0) {
@@ -68,6 +71,7 @@ router.post('/db/updateRating', async (ctx, next)=> {
 });
 
 router.post('/db/groupRatingByMovie', async (ctx, next)=> {
+    console.log('/db/groupRatingByMovie Request ', JSON.stringify(ctx.request.body));
     ctx.body = await rating.groupRatingByMovie(ctx.request.body).then((instance)=> {
         console.log('/db/groupRatingByMovie POST | Success: ', JSON.stringify(instance[0]));
         return {

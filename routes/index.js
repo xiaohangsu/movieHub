@@ -12,6 +12,7 @@ if (CONFIG === 'dev') {
 }
 
 router.get('/', (ctx, next)=> {
+	console.log('/ GET | ');
     return ctx.render('../views/index.html', {
         staticPath: STATIC_PATH
     });
