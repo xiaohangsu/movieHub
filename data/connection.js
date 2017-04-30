@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('moviebase', 'root', '', {
-    host: '',
+const sequelize = new Sequelize('moviebase', 'nyumovie', 'Usa2018!', {
+    host: 'nyumoviemysql.cmpl0emqr3ka.us-east-1.rds.amazonaws.com',
     dialect: 'mysql',
 
     pool: {

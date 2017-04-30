@@ -139,6 +139,24 @@ router.post('/db/getNewestMovies', async (ctx, next)=> {
             error: err.message
         }
     });
-})
+});
+
+router.post('/db/getRecommendMovies', async (ctx, next)=> {
+    console.log('/db/getRecommendMovies Request ', JSON.stringify(ctx.request.body));
+    ctx.body = await movie.getRecommendMovies(ctx.request.body).then((instances)=>{
+        console.log('/db/getRecommendMovies POST | Success');
+        return {
+            status: 200,
+            message: 'Success',
+            instances: JSON.parse(instances)
+        };
+    }).catch((err)=> {
+        console.log('/db/getRecommendMovies POST | Error');
+        return {
+            status: 400,
+            error: err.message
+        };
+    });
+});
 
 module.exports = router;
