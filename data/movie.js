@@ -62,9 +62,11 @@ class Movie {
     }
 
     getMoviesByGenre(json) {
+        json.movid = parseInt(json.movid);
+        json.genre = '%' + json.genre + '%';
         return query(()=> {
             return this.conn.query('SELECT * FROM Movies '
-                + 'WHERE genre=:genre and movid>:movid ORDER BY movid LIMIT :count',
+                + 'WHERE genre like :genre and movid > :movid ORDER BY movid LIMIT :count',
                 {replacements: json});
         });
     }
