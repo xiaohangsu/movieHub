@@ -9,7 +9,7 @@ const index     = require('./routes/index');
 const customer  = require('./routes/customer');
 const movie     = require('./routes/movie');
 const rating    = require('./routes/rating');
-
+const cors      = require('kcors');
 connection
     .authenticate()
     .then(()=> {
@@ -23,6 +23,7 @@ connection
                     html: 'ejs'
                 }
             }))
+            .use(cors())
             .use(index.routes())
             .use(customer.routes())
             .use(rating.routes())
