@@ -272,3 +272,17 @@ You can use this to get 0-10 rating total and calculate average rating.
 > * 400 Error
 > 
 >##### instances
+
+#### <span style="color:#5fba7d">post</span> /db/getRecommendMovies
+Return recommend movies according userId.
+> #### req example:
+> ```
+> {
+> 	"userId": User Id(MUST)
+> }
+>```
+> #### res:
+> * 200 Success
+> * 400 Error
+> 
+>##### instances
