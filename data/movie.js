@@ -85,6 +85,19 @@ class Movie {
             url: RECOMMEND_URL,
             qs: json});
     }
+
+    searchMovies(json) {
+        if (json !== undefined && json.movname !== undefined) {
+            json.movname = '%' + json.movname + '%';
+            return query(()=> {
+                return this.conn.query('SELECT * FROM Movies '
+                    + ' WHERE movname  LIKE :movname',
+                {replacements:json});
+            });
+        } else {
+            throw Error('Data Error: Json: ' + JSON.stringify(json));
+        }
+    }
 }
 
 const movies = new Movie();
