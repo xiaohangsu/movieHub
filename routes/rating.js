@@ -77,7 +77,7 @@ router.post('/db/groupRatingByMovie', async (ctx, next)=> {
         return {
             status: 200,
             message: 'Success',
-            instance: instacne[0]
+            instance: instance[0]
         };
     }).catch((err)=> {
         console.log('/db/groupStarByMovie POST | ERROR: ', JSON.stringify(err));
