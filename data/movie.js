@@ -91,7 +91,7 @@ class Movie {
             json.movname = '%' + json.movname + '%';
             return query(()=> {
                 return this.conn.query('SELECT * FROM Movies '
-                    + ' WHERE movname AND movid > :movid '
+                    + ' WHERE movid > :movid AND movname '
                     + ' LIKE :movname ORDER BY movid LIMIT :count',
                 {replacements:json});
             });
