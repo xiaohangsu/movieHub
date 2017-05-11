@@ -136,4 +136,31 @@ router.post('/db/updateCustomerPortraitUrl', async (ctx, next)=> {
     });
 });
 
+router.post('/db/selectUserRatings', async (ctx, next)=> {
+    console.log('/db/selectUserRatings Request', JSON.stringify(ctx.request.body));
+    ctx.body = await customer.selectUserRatings(ctx.request.body).then((instance)=> {
+        console.log('/db/selectUserRatings POST | Success');
+        if (instance[0].affectedRows != 0 && instance[0].changedRows != 0) {
+            return {
+                status: 200,
+                message: 'Success',
+                instances: instance[0]
+            };
+
+        } else {
+            return {
+                status: 205,
+                message: 'Unmatched Or same Url'
+            }
+        }
+    }).catch((err)=> {
+        console.log('/db/selectUserRatings POST | Error: ', err.message);
+        return {
+            status: 400,
+            error: err.message
+        }
+    });
+});
+
+
 module.exports = router;
