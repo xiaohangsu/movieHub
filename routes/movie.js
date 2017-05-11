@@ -166,7 +166,7 @@ router.post('/searchMovies', async (ctx, next)=> {
         return {
             status: 200,
             message: 'Success',
-            instances: instances
+            instances: instances[0]
         };
     }).catch((err)=> {
         console.log('/searchMovies POST | Error');
