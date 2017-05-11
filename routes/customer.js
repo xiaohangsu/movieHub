@@ -10,7 +10,8 @@ router.post('/login', async (ctx, next)=> {
         if (ctx.request.body.cuspassword == instance[0][0].cuspassword) {
             return {
                 status: 200,
-                message: 'Success'
+                message: 'Success',
+                cusid: instance[0][0].cusid
             }
         } else {
             return {
