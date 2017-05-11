@@ -11,7 +11,7 @@ router.post('/login', async (ctx, next)=> {
             return {
                 status: 200,
                 message: 'Success',
-                cusid: instance[0][0].cusid
+                instance: instance[0][0]
             }
         } else {
             return {
