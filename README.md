@@ -224,6 +224,24 @@ Return most recently **count** numbers movie by movyear.
 > 
 >##### instances
 
+#### <span style="color:#5fba7d">post</span> /searchMovies
+Return data orders by movid.</br>
+Trick: When first time to fetch, movid=-1 can get movid > -1 rows. Then you can get every **count** number of rows by passing last movid</br>
+Return not more than count number of rows data.
+> #### req example:
+> ```
+> {
+>	"movid": movid (MUST),
+>   "movname": movname (MUST or Partial Name),
+> 	"count": count(MUST)
+> }
+>```
+> #### res:
+> * 200 Success
+> * 400 Error
+> 
+>##### instances
+
 ### Rating
 
 #### <span style="color:#5fba7d">post</span> /db/addRating
