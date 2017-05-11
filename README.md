@@ -99,6 +99,21 @@ Currently without Session Auth
 > 
 >##### message
 
+
+#### <span style="color:#5fba7d">post</span> /db/getUserRatings
+Return all user ratings via cusid.
+> #### req example:
+> ```
+> {
+> 	"cusid": User Id(MUST)
+> }
+>```
+> #### res:
+> * 200 Success
+> * 400 Error
+> 
+>##### instances
+
 ### Movie
 
 #### <span style="color:#5fba7d">post</span> /db/addMovie
