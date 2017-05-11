@@ -136,10 +136,10 @@ router.post('/db/updateCustomerPortraitUrl', async (ctx, next)=> {
     });
 });
 
-router.post('/db/selectUserRatings', async (ctx, next)=> {
-    console.log('/db/selectUserRatings Request', JSON.stringify(ctx.request.body));
-    ctx.body = await customer.selectUserRatings(ctx.request.body).then((instance)=> {
-        console.log('/db/selectUserRatings POST | Success');
+router.post('/db/getUserRatings', async (ctx, next)=> {
+    console.log('/db/getUserRatings Request', JSON.stringify(ctx.request.body));
+    ctx.body = await customer.getUserRatings(ctx.request.body).then((instance)=> {
+        console.log('/db/getUserRatings POST | Success');
         if (instance[0].affectedRows != 0 && instance[0].changedRows != 0) {
             return {
                 status: 200,
@@ -154,7 +154,7 @@ router.post('/db/selectUserRatings', async (ctx, next)=> {
             }
         }
     }).catch((err)=> {
-        console.log('/db/selectUserRatings POST | Error: ', err.message);
+        console.log('/db/getUserRatings POST | Error: ', err.message);
         return {
             status: 400,
             error: err.message

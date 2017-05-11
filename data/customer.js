@@ -47,7 +47,7 @@ class Customer {
         });
     }
 
-    selectUserRatings(json) {
+    getUserRatings(json) {
         return query(()=> {
             return this.conn.query('SELECT R.rating, M.* FROM Ratings R, ' + 
                 'Movies M WHERE R.cusid = :cusid And R.movid = M.movid',
