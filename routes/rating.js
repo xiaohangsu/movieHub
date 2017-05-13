@@ -12,8 +12,7 @@ let addRatingToRecommendSystem = (json)=> {
     rq({
         method:'POST',
         uri: CONFIG.RECOMMEND_SYSTEM_URL + CONFIG.UPDATE_RATING_PATH
-            + '?userId=' + json.cusid + '&movId=' + json.movid + '&rating=' + json.rating,
-        body: {}
+            + '?userId=' + json.cusid + '&movId=' + json.movid + '&rating=' + json.rating
     });
 };
 

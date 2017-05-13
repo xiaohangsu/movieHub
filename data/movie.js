@@ -83,7 +83,9 @@ class Movie {
     getRecommendMovies(json) {
         return request.get({
             url: CONFIG.RECOMMEND_SYSTEM_URL + CONFIG.RECOMMEND_PATH,
-            qs: json});
+            qs: {
+                userId: json.cusid
+            }});
     }
 
     searchMovies(json) {
