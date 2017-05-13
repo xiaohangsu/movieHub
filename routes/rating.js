@@ -1,10 +1,25 @@
+const rq        = require('request');
 const Router    = require('koa-router');
+
 const rating    = require('./../data/rating');
+const CONFIG    = require('../config');
 
 let router = new Router();
 
+// add rating also notify recommend system to update
+
+let addRatingToRecommendSystem = (json)=> {
+    rq({
+        method:'POST',
+        uri: CONFIG.RECOMMEND_SYSTEM_URL + CONFIG.UPDATE_RATING_PATH
+            + '?userId=' + json.cusid + '&movId=' + json.movid + '&rating=' + json.rating,
+        body: {}
+    });
+};
+
 router.post('/db/addRating', async (ctx, next)=> {
     console.log('/db/addRating Request ', JSON.stringify(ctx.request.body));
+    addRatingToRecommendSystem(ctx.request.body);
     ctx.body = await rating.addRating(ctx.request.body).then((instance)=> {
         console.log('/db/addRating POST | Success: ', JSON.stringify(instance[0]));
         return {

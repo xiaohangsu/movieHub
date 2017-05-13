@@ -2,7 +2,7 @@ const request    = require('request-promise');
 const connection = require('./connection');
 const query      = require('./query');
 
-const RECOMMEND_URL = require('../config').RECOMMEND_SYSTEM_URL;
+const CONFIG = require('../config');
 
 // Movies: movid, movname, movyear, genre, director,
 // description, movTrailerUrl, movScreenshotUrl, CreatAt, UpdateAt
@@ -82,7 +82,7 @@ class Movie {
 
     getRecommendMovies(json) {
         return request.get({
-            url: RECOMMEND_URL,
+            url: CONFIG.RECOMMEND_SYSTEM_URL + CONFIG.RECOMMEND_PATH,
             qs: json});
     }
 
